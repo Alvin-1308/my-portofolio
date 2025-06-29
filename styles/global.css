@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e7e0d4; /* warna background mirip web asli */
+  font-family: 'Times New Roman', serif;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
