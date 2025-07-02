@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+
+
 body {
+  background-color: #e6ddc4;
+  background-image: url('/images/texture.png');
+  background-repeat: repeat;
+  background-blend-mode: multiply;
   margin: 0;
   padding: 0;
-  background-color: #ede8de;
-  font-family: 'Times New Roman', serif;
-  color: #111;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+
 
 a {
   text-decoration: none;
@@ -18,4 +28,76 @@ a:hover {
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-text {
+  display: inline-block;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee-text:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+body {
+  overflow-x: hidden; /* Membatasi supaya ga bisa geser kanan-kiri */
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.font-header {
+  font-family: 'UnifrakturCook', serif;
+}
+
+.menu-link {
+  position: relative;
+  text-decoration: none;
+  color: #f0f0f0;
+  transition: color 0.3s ease;
+}
+
+.menu-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #ff4a00; /* Warna merah seperti di web asli */
+  transition: width 0.3s ease;
+}
+
+.menu-link:hover::after {
+  width: 100%;
 }
