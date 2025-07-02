@@ -11,76 +11,70 @@ export default function Home() {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          gap: "3rem",
-          flexWrap: "wrap",
+          textAlign: "left",
+          position: "relative",
           color: "#222222",
+          gap: "2rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
         }}
       >
         {/* Foto Profile */}
         <div
           style={{
-            flex: "0 0 250px",
-            width: "250px",
+            width: "260px",
             height: "300px",
-            borderRadius: "20px", // Ubah jadi kotak dengan rounded
+            borderRadius: "15px",
             overflow: "hidden",
-            boxShadow: "0 4px 15px rgba(0,0,0,0.2)", // Tambah shadow biar lebih keren
-            transition: "transform 0.3s",
+            flexShrink: 0,
+            boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
           }}
-          className="profile-photo"
         >
           <Image
             src="/images/profile.jpg"
             alt="Profile Photo"
-            width={250}
+            width={260}
             height={300}
             style={{ objectFit: "cover" }}
           />
         </div>
 
-        {/* Keterangan */}
-        <div
-          style={{
-            flex: "1",
-            maxWidth: "500px",
-            textAlign: "left",
-          }}
-        >
+        {/* Konten */}
+        <div>
           <h1
             style={{
-              fontSize: "2.5rem",
+              fontSize: "2.8rem",
               fontWeight: "700",
               fontFamily: "'Playfair Display', serif",
               marginBottom: "0.5rem",
             }}
-            className="responsive-title"
           >
-            Hi! Im Pratama Alvin Ahlafi
+            Hi! I'm Pratama Alvin Ahlafi
           </h1>
 
           <p
             style={{
-              fontSize: "1.3rem",
+              fontSize: "1.5rem",
               fontFamily: "'Playfair Display', serif",
-              marginBottom: "1.5rem",
+              marginBottom: "1rem",
             }}
-            className="responsive-subtitle"
           >
             IT Student
           </p>
 
           <p
             style={{
-              fontSize: "1.1rem",
+              fontSize: "1.2rem",
               lineHeight: "1.6",
+              maxWidth: "500px",
               fontFamily: "'Inter', sans-serif",
               marginBottom: "2rem",
             }}
-            className="responsive-desc"
           >
             IT student at President University, passionate about building digital experiences and continuously learning in the field of technology.
           </p>
 
+          {/* Teks besar Website Portfolio tanpa hover */}
           <h2
             style={{
               fontSize: "3rem",
@@ -91,7 +85,6 @@ export default function Home() {
               padding: "0.5rem 1rem",
               display: "inline-block",
             }}
-            className="website-title"
           >
             Website Portfolio
           </h2>
@@ -151,34 +144,22 @@ export default function Home() {
         </p>
       </div>
 
+      {/* CSS tambahan */}
       <style jsx>{`
         @media (max-width: 768px) {
           main {
             flex-direction: column;
             text-align: center;
           }
-          .responsive-title {
-            font-size: 2rem;
+          h1 {
+            font-size: 2rem !important;
           }
-          .responsive-subtitle {
-            font-size: 1.1rem;
+          p {
+            font-size: 1rem !important;
           }
-          .responsive-desc {
-            font-size: 0.95rem;
+          h2 {
+            font-size: 2rem !important;
           }
-          .website-title {
-            font-size: 2.2rem;
-          }
-          .profile-photo {
-            width: 100% !important;
-            height: auto !important;
-          }
-        }
-
-        .website-title:hover {
-          transform: scale(1.05);
-          cursor: pointer;
-          transition: transform 0.3s;
         }
 
         @keyframes marquee {

@@ -10,22 +10,22 @@ export default function Portfolio() {
       title: "Project 1",
       detailTitle: "3D Blender Project.",
       detailDesc: "In this project, I created several basic 3D models, including low-poly animals and simple objects like airplanes with detailed elements. This project helped me strengthen my fundamental 3D modeling skills and explore creative forms in a minimalistic style.",
-      image: "/images/project1.jpg",
+      image: "/images/project1.png",
       year: 2024,
     },
     {
       id: 2,
       title: "Project 2",
-      detailTitle: "Cinema App Mobile.",
-      detailDesc: "In this project, I designed a mobile cinema app that allows users to easily book tickets, select seats, and explore movies — providing a seamless experience similar to popular cinema applications.",
-      image: "/images/project2.jpg",
+      detailTitle: "Malware Attack game.",
+      detailDesc: "In this project, We created an educational game called Malware Attack to simulate how malware and viruses attack computer systems. The idea behind this game is to help players understand different types of cyber threats in a fun and interactive way. Through this project, We wanted to combine my interest in cybersecurity and game development, making it easier for people to learn about digital security while playing.",
+      image: "/images/project2.png",
       year: 2025,
     },
     {
       id: 3,
       title: "Project 3",
-      detailTitle: "This is a detailed description of Project 3.",
-      detailDesc: "Combining illustration and branding in storytelling way.",
+      detailTitle: "Cinema App Mobile.",
+      detailDesc: "In this project, I designed a mobile cinema app that allows users to easily book tickets, select seats, and explore movies — providing a seamless experience similar to popular cinema applications.",
       image: "/images/project3.jpg",
       year: 2025,
     },
@@ -110,7 +110,17 @@ export default function Portfolio() {
             lineHeight: "1.5",
           }}
         >
-          A selection of highlighted projects — click on each to learn more.
+          This portfolio showcases my various projects during my time at President University, covering different areas of design, web development, and creative work.
+        </p>
+        <p
+          style={{
+            marginTop: "2rem",
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "1rem",
+            opacity: 0.8,
+          }}
+        >
+          Click on each project to learn more ➔
         </p>
       </div>
 
@@ -175,16 +185,16 @@ export default function Portfolio() {
                   {project.detailDesc}
                 </p>
                 <img
-                 src={project.image}
-  alt={project.title}
-  style={{
-    width: "100%",
-    height: "300px",      
-    objectFit: "cover",    
-    marginTop: "1rem",
-    borderRadius: "8px"
-  }}
-/>
+                  src={project.image}
+                  alt={project.title}
+                  style={{
+                    width: "100%",
+                    height: "300px",
+                    objectFit: "cover",
+                    marginTop: "1rem",
+                    borderRadius: "8px",
+                  }}
+                />
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
