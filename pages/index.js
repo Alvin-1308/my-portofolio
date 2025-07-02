@@ -55,7 +55,7 @@ export default function Home() {
             }}
             className="responsive-title"
           >
-            Pratama Alvin Ahlafi
+            Hi! Im Pratama Alvin Ahlafi
           </h1>
 
           <p
