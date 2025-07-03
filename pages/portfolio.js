@@ -18,7 +18,7 @@ export default function Portfolio() {
       title: "Project 2",
       detailTitle: "Malware Attack game.",
       detailDesc: "In this project, We created an educational game called Malware Attack to simulate how malware and viruses attack computer systems. The idea behind this game is to help players understand different types of cyber threats in a fun and interactive way. Through this project, We wanted to combine my interest in cybersecurity and game development, making it easier for people to learn about digital security while playing.",
-      image: "/images/project2.png",
+      image: "/images/project2.jpg",
       year: 2025,
     },
     {
