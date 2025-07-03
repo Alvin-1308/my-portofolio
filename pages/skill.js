@@ -5,26 +5,32 @@ export default function Skills() {
     {
       title: "Software & Tools",
       description:
-        "Experienced using Visual Studio Code for coding, Git for version control, Figma for UI design, and other productivity tools to enhance workflow and collaboration.",
+        "I use Visual Studio Code as my main code editor to build modern, scalable, and clean applications. Combined with various extensions and developer tools, I ensure my coding workflow is efficient and organized. I also utilize Git for version control, browser developer tools for debugging, and frameworks like React or Next.js to bring dynamic ideas to life.",
       image: "/images/skill1.jpg",
     },
     {
       title: "Design",
       description:
-        "Skilled in creating visual content using Canva and basic graphic design principles to deliver impactful and attractive designs quickly and effectively.",
+        "I leverage Canva to create visually appealing and user-friendly designs for social media content, presentations, and UI mockups. With a strong sense of composition and color harmony, I can turn ideas into engaging visuals that communicate messages clearly and effectively.",
       image: "/images/skill2.jpg",
     },
     {
       title: "3D Modeling",
       description:
-        "Basic proficiency in Blender, able to create low-poly models and simple 3D scenes as part of creative explorations and personal projects.",
+        "I specialize in creating low poly 3D models using Blender, perfect for games, visual assets, and animated projects. My focus is on simplicity and style, transforming complex concepts into clean and eye-catching 3D artworks that are optimized for various platforms.",
       image: "/images/skill3.png",
     },
     {
       title: "Web Development",
       description:
-        "Proficient in HTML, CSS, JavaScript, React, and Next.js to build responsive, interactive, and visually appealing websites with modern best practices.",
+        "I build responsive and interactive websites using modern web technologies, ensuring a seamless user experience across devices. From landing pages to complex web applications, I focus on writing clean code, optimizing performance, and delivering visually pleasing and functional digital products.",
       image: "/images/skill4.jpg",
+    },
+    {
+      title: "Document Creation (Microsoft Word)",
+      description:
+        "I am proficient in using Microsoft Word to create well-structured documents, reports, proposals, and professional presentations. With attention to detail in formatting and layout, I ensure every document is clear, polished, and visually appealing.",
+      image: "/images/skill5.png", // kosong dulu, nanti kamu ganti
     },
   ];
 
@@ -74,7 +80,7 @@ export default function Skills() {
             justifyContent: "center",
             padding: "4rem 2rem",
             flexWrap: "wrap",
-            maxWidth: "1400px",
+            maxWidth: "1300px",
             margin: "0 auto",
             gap: "2rem",
           }}
@@ -85,7 +91,7 @@ export default function Skills() {
             style={{
               flex: "0 0 400px",
               width: "400px",
-              height: "300px",
+              height: "250px",
               borderRadius: "15px",
               overflow: "hidden",
               boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
@@ -95,7 +101,7 @@ export default function Skills() {
               src={skill.image}
               alt={skill.title}
               width={400}
-              height={300}
+              height={250}
               style={{ objectFit: "cover" }}
               className="skill-image"
             />
