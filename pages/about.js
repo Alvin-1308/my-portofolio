@@ -51,7 +51,7 @@ export default function About() {
         {/* Foto */}
         <div
           style={{
-            width: "300px",
+            width: "270px",
             height: "300px",
             backgroundColor: "#ccc",
             borderRadius: "10px",

@@ -30,7 +30,7 @@ export default function Skills() {
       title: "Document Creation (Microsoft Word)",
       description:
         "I am proficient in using Microsoft Word to create well-structured documents, reports, proposals, and professional presentations. With attention to detail in formatting and layout, I ensure every document is clear, polished, and visually appealing.",
-      image: "/images/skill5.png", // kosong dulu, nanti kamu ganti
+      image: "/images/skill5.png",
     },
   ];
 
@@ -90,7 +90,7 @@ export default function Skills() {
             className="skill-image-container"
             style={{
               flex: "0 0 400px",
-              width: "400px",
+              width: "300px",
               height: "250px",
               borderRadius: "15px",
               overflow: "hidden",

@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <>
       {/* Section judul besar */}
@@ -67,25 +71,101 @@ export default function Contact() {
             marginBottom: "2rem",
           }}
         >
-          Feel free to reach me via email for collaboration, project inquiries,
+          Feel free to send me a message for collaboration, project inquiries,
           or just to say hello!
         </p>
-        <a
-          href="mailto:pratama.ahlafi@student.president.ac.id"
-          style={{
-            fontSize: "1.5rem",
-            color: "#fff",
-            backgroundColor: "#222",
-            padding: "0.7rem 1.5rem",
-            textDecoration: "none",
-            borderRadius: "5px",
-            transition: "background-color 0.3s",
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#444")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#222")}
-        >
-          pratama.ahlafi@student.president.ac.id
-        </a>
+
+        {submitted ? (
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "green",
+              marginTop: "2rem",
+            }}
+          >
+            ✅ Your message has been sent successfully!
+          </p>
+        ) : (
+          <form
+            action="https://formspree.io/f/mpwrepdq"
+            method="POST"
+            onSubmit={() => setSubmitted(true)}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              textAlign: "left",
+            }}
+          >
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              required
+              style={{
+                padding: "1rem",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                fontSize: "1rem",
+              }}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+              style={{
+                padding: "1rem",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                fontSize: "1rem",
+              }}
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              required
+              style={{
+                padding: "1rem",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                fontSize: "1rem",
+              }}
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              required
+              rows="6"
+              style={{
+                padding: "1rem",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                fontSize: "1rem",
+                resize: "vertical",
+              }}
+            ></textarea>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "#222",
+                color: "#fff",
+                padding: "1rem",
+                borderRadius: "5px",
+                border: "none",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                transition: "background-color 0.3s",
+              }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#444")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#222")}
+            >
+              Send Message
+            </button>
+          </form>
+        )}
       </section>
     </>
   );
