@@ -6,45 +6,59 @@ export default function Portfolio() {
 
   const projects = [
     {
-      id: 1,
+      id: 5,
       title: "Project 1",
-      detailTitle: "3D Blender Project.",
-      detailDesc: "In this project, I created several basic 3D models, including low-poly animals and simple objects like airplanes with detailed elements. This project helped me strengthen my fundamental 3D modeling skills and explore creative forms in a minimalistic style.",
+      detailTitle: "Flappy Bird Clone Game.",
+      detailDesc:
+        "In this project, I built a simple Flappy Bird clone using HTML, CSS, and JavaScript. Players control a bird to avoid pipes and score points. This project helped me practice game logic, animation, and interactive web development.",
       image: "/images/project1.png",
       year: 2024,
     },
     {
-      id: 2,
+      id: 6,
       title: "Project 2",
-      detailTitle: "Malware Attack game.",
-      detailDesc: "In this project, We created an educational game called Malware Attack to simulate how malware and viruses attack computer systems. The idea behind this game is to help players understand different types of cyber threats in a fun and interactive way. Through this project, We wanted to combine my interest in cybersecurity and game development, making it easier for people to learn about digital security while playing.",
+      detailTitle: "Home sales App.",
+      detailDesc:
+        "In this project, I developed a home sales management application using Java with Apache NetBeans and a database. The app helps manage customer data, calculate prices, installment plans, and generate detailed home purchase information. This project improved my skills in Java GUI, database integration, and application logic.",
       image: "/images/project2.png",
+      year: 2024,
+    },
+    {
+      id: 1,
+      title: "Project 3",
+      detailTitle: "3D Blender Project.",
+      detailDesc:
+        "In this project, I created several basic 3D models, including low-poly animals and simple objects like airplanes with detailed elements. This project helped me strengthen my fundamental 3D modeling skills and explore creative forms in a minimalistic style.",
+      image: "/images/project3.png",
+      year: 2024,
+    },
+    {
+      id: 2,
+      title: "Project 4",
+      detailTitle: "Malware Attack game.",
+      detailDesc:
+        "In this project, we created an educational game called Malware Attack to simulate how malware and viruses attack computer systems. The idea behind this game is to help players understand different types of cyber threats in a fun and interactive way. Through this project, we wanted to combine my interest in cybersecurity and game development, making it easier for people to learn about digital security while playing.",
+      image: "/images/project4.png",
       year: 2025,
     },
     {
       id: 3,
-      title: "Project 3",
+      title: "Project 5",
       detailTitle: "Cinema App Mobile.",
-      detailDesc: "In this project, I designed a mobile cinema app that allows users to easily book tickets, select seats, and explore movies — providing a seamless experience similar to popular cinema applications.",
-      image: "/images/project3.jpg",
+      detailDesc:
+        "In this project, I designed a mobile cinema app that allows users to easily book tickets, select seats, and explore movies — providing a seamless experience similar to popular cinema applications.",
+      image: "/images/project5.jpg",
       year: 2025,
     },
     {
       id: 4,
-      title: "Project 4",
-      detailTitle: "This is a detailed description of Project 4.",
-      detailDesc: "Focuses on typography and editorial design.",
-      image: "/images/project.jpg",
+      title: "Project 6",
+      detailTitle: "Library Management System.",
+      detailDesc:
+        "In this project, we created a Library Management System web app that lets users browse book collections and request to borrow them easily. As an admin, I can add and manage books and track borrowing history. This project helped me improve my skills in web development and designing user-friendly interfaces.",
+      image: "/images/project6.png",
       year: 2025,
-    },
-    {
-      id: 5,
-      title: "Project 5",
-      detailTitle: "This is a detailed description of Project 5.",
-      detailDesc: "A conceptual design experiment blending art and technology.",
-      image: "/images/project.jpg",
-      year: 2025,
-    },
+    },  
   ];
 
   const toggleProject = (id) => {

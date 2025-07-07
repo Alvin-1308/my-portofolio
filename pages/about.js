@@ -52,7 +52,7 @@ export default function About() {
         <div
           style={{
             width: "270px",
-            height: "300px",
+            height: "auto",
             backgroundColor: "#ccc",
             borderRadius: "10px",
             overflow: "hidden",
@@ -64,8 +64,9 @@ export default function About() {
             alt="Profile"
             style={{
               width: "100%",
-              height: "100%",
+              height: "auto",
               objectFit: "cover",
+              display: "block",
             }}
           />
         </div>
@@ -84,9 +85,11 @@ export default function About() {
             Hello! I'm Pratama Alvin Ahlafi, an IT student at President University with a passion for creating interactive and visually captivating digital experiences. I enjoy exploring the intersection of design and technology, and I love to continuously learn and improve my skills in web development, UI/UX, and creative coding.
           </p>
           <br />
-          <p>My main concentration is in Cyber Security, where I focus on building secure and reliable systems to protect users and data. However, my interests don’t stop there — I also have a strong foundation in design, web development, and 3D modeling. These diverse skills allow me to approach every project from both a creative and technical perspective, delivering solutions that are not only secure but also visually engaging and user-friendly.</p>
           <p>
-           My goal is to create impactful and elegant digital experiences that combine security, functionality, and aesthetics. Let’s build something amazing together!
+            My main concentration is in Cyber Security, where I focus on building secure and reliable systems to protect users and data. However, my interests don’t stop there — I also have a strong foundation in design, web development, and 3D modeling. These diverse skills allow me to approach every project from both a creative and technical perspective, delivering solutions that are not only secure but also visually engaging and user-friendly.
+          </p>
+          <p>
+            My goal is to create impactful and elegant digital experiences that combine security, functionality, and aesthetics. Let’s build something amazing together!
           </p>
         </div>
       </section>
@@ -205,6 +208,10 @@ export default function About() {
           }
           section:nth-of-type(2) div {
             width: 100% !important;
+          }
+          section:nth-of-type(2) img {
+            width: 100% !important;
+            height: auto !important;
           }
         }
       `}</style>

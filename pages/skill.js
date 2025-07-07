@@ -23,7 +23,7 @@ export default function Skills() {
     {
       title: "Web Development",
       description:
-        "I build responsive and interactive websites using modern web technologies, ensuring a seamless user experience across devices. From landing pages to complex web applications, I focus on writing clean code, optimizing performance, and delivering visually pleasing and functional digital products.",
+        "I build responsive and interactive websites using modern web technologies like HTML, CSS, and JavaScript, ensuring a seamless user experience across devices. From landing pages to complex web applications, I focus on writing clean code, optimizing performance, and delivering visually pleasing and functional digital products.",
       image: "/images/skill4.jpg",
     },
     {
@@ -31,6 +31,12 @@ export default function Skills() {
       description:
         "I am proficient in using Microsoft Word to create well-structured documents, reports, proposals, and professional presentations. With attention to detail in formatting and layout, I ensure every document is clear, polished, and visually appealing.",
       image: "/images/skill5.png",
+    },
+    {
+      title: "Kali Linux",
+      description:
+        "I use Kali Linux for penetration testing and exploring cybersecurity tools. It helps me understand system vulnerabilities, simulate attacks, and strengthen security measures. Through working with Kali Linux, I improved my skills in ethical hacking, network analysis, and overall security awareness.",
+      image: "/images/skill6.png",
     },
   ];
 
@@ -89,9 +95,8 @@ export default function Skills() {
           <div
             className="skill-image-container"
             style={{
-              flex: "0 0 400px",
+              flex: "0 0 auto",
               width: "300px",
-              height: "250px",
               borderRadius: "15px",
               overflow: "hidden",
               boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
@@ -102,7 +107,7 @@ export default function Skills() {
               alt={skill.title}
               width={400}
               height={250}
-              style={{ objectFit: "cover" }}
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
               className="skill-image"
             />
           </div>
@@ -198,6 +203,13 @@ export default function Skills() {
           }
           section:nth-of-type(n + 2) {
             flex-direction: column !important;
+          }
+          .skill-image-container {
+            width: 100% !important;
+          }
+          .skill-image-container img {
+            width: 100% !important;
+            height: auto !important;
           }
         }
 
