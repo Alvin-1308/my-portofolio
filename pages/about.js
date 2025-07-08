@@ -122,7 +122,7 @@ export default function About() {
               margin: 0,
             }}
           >
-            MOTIVATIONAL WORDS
+            Motivational Quotes
           </h1>
         </div>
       </section>
