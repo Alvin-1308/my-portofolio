@@ -73,34 +73,36 @@ export default function Contact() {
       {/* Section form */}
       <section
         style={{
-          padding: "5rem 2rem",
-          maxWidth: "800px",
+          padding: "4rem 1rem",
+          maxWidth: "600px",
           margin: "0 auto",
-          textAlign: "center",
           fontFamily: "'Playfair Display', serif",
         }}
       >
         <div
           style={{
-            fontSize: "4rem",
+            fontSize: "3rem",
             marginBottom: "1rem",
+            textAlign: "center",
           }}
         >
           ✉️
         </div>
         <h2
           style={{
-            fontSize: "2rem",
+            fontSize: "1.8rem",
             fontWeight: "700",
             marginBottom: "1rem",
+            textAlign: "center",
           }}
         >
           Let's get in touch
         </h2>
         <p
           style={{
-            fontSize: "1.2rem",
+            fontSize: "1.1rem",
             marginBottom: "2rem",
+            textAlign: "center",
           }}
         >
           Feel free to send me a message for collaboration, project inquiries,
@@ -113,8 +115,7 @@ export default function Contact() {
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
-            textAlign: "left",
-            position: "relative",
+            width: "100%",
           }}
         >
           {submitted && (
@@ -131,6 +132,7 @@ export default function Contact() {
               borderRadius: "5px",
               border: "1px solid #ccc",
               fontSize: "1rem",
+              width: "100%",
             }}
           />
           <input
@@ -143,6 +145,7 @@ export default function Contact() {
               borderRadius: "5px",
               border: "1px solid #ccc",
               fontSize: "1rem",
+              width: "100%",
             }}
           />
           <input
@@ -155,6 +158,7 @@ export default function Contact() {
               borderRadius: "5px",
               border: "1px solid #ccc",
               fontSize: "1rem",
+              width: "100%",
             }}
           />
           <textarea
@@ -168,6 +172,7 @@ export default function Contact() {
               border: "1px solid #ccc",
               fontSize: "1rem",
               resize: "vertical",
+              width: "100%",
             }}
           ></textarea>
           <button
@@ -183,10 +188,6 @@ export default function Contact() {
               fontWeight: "bold",
               cursor: loading ? "not-allowed" : "pointer",
               transition: "background-color 0.3s",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
             }}
             onMouseOver={(e) => {
               if (!loading) e.target.style.backgroundColor = "#444";
@@ -242,6 +243,12 @@ export default function Contact() {
         @keyframes spin {
           to {
             transform: rotate(360deg);
+          }
+        }
+
+        @media (max-width: 768px) {
+          section h1 {
+            font-size: 3rem;
           }
         }
       `}</style>
