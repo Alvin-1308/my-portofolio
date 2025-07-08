@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (menuOpen) {
@@ -67,11 +69,11 @@ export default function Header() {
           transition: "opacity 0.5s ease",
         }}
       >
-        <MenuLink href="/" title="Home" onClick={() => setMenuOpen(false)} />
-        <MenuLink href="/portfolio" title="Portfolio" onClick={() => setMenuOpen(false)} />
-        <MenuLink href="/about" title="About" onClick={() => setMenuOpen(false)} />
-        <MenuLink href="/skill" title="Skills" onClick={() => setMenuOpen(false)} />
-        <MenuLink href="/contact" title="Contact" onClick={() => setMenuOpen(false)} />
+        <MenuLink href="/" title="Home" onClick={() => setMenuOpen(false)} router={router} />
+        <MenuLink href="/portfolio" title="Portfolio" onClick={() => setMenuOpen(false)} router={router} />
+        <MenuLink href="/about" title="About" onClick={() => setMenuOpen(false)} router={router} />
+        <MenuLink href="/skill" title="Skills" onClick={() => setMenuOpen(false)} router={router} />
+        <MenuLink href="/contact" title="Contact" onClick={() => setMenuOpen(false)} router={router} />
       </div>
 
       {/* Burger style */}
@@ -115,7 +117,9 @@ export default function Header() {
   );
 }
 
-function MenuLink({ href, title, onClick }) {
+function MenuLink({ href, title, onClick, router }) {
+  const isActive = router.pathname === href;
+
   return (
     <Link href={href} legacyBehavior>
       <a
@@ -136,7 +140,7 @@ function MenuLink({ href, title, onClick }) {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 0%;
+            width: ${isActive ? "100%" : "0%"};
             height: 4px;
             background-color: #ff4a00;
             transition: width 0.3s ease;
