@@ -230,6 +230,90 @@ export default function Portfolio() {
           </div>
         );
       })}
+
+      {/* Let's Talk panel */}
+      <div
+        style={{
+          flex: "0 0 350px",
+          padding: "2rem",
+          backgroundColor: "#e6ddc4",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "2.5rem",
+            fontWeight: "700",
+            marginBottom: "1rem",
+          }}
+        >
+          LET'S TALK!
+        </h1>
+        <p
+          style={{
+            fontSize: "1.1rem",
+            marginBottom: "2rem",
+            lineHeight: "1.5",
+          }}
+        >
+          Are you looking for an eye-catching design? Let’s create something great together.
+        </p>
+        <a href="/contact" className="email-button">
+          <span className="text">EMAIL ME</span>
+          <span className="arrow">➔</span>
+        </a>
+        <p
+          style={{
+            marginTop: "1rem",
+            fontSize: "1rem",
+            opacity: 0.7,
+          }}
+        >
+           Available — Ready to create something awesome with you!
+        </p>
+        <style jsx>{`
+          .email-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 3rem;
+            border: 2px solid #111;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #111;
+            overflow: hidden;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.4s ease;
+          }
+          .email-button .text {
+            position: relative;
+            transition: transform 0.4s ease;
+          }
+          .email-button .arrow {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            font-size: 1.7rem;
+          }
+          .email-button:hover .text {
+            transform: translateX(15px);
+          }
+          .email-button:hover .arrow {
+            opacity: 1;
+            transform: translateX(10px);
+          }
+        `}</style>
+      </div>
     </div>
   );
 }

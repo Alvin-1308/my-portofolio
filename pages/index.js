@@ -74,7 +74,7 @@ export default function Home() {
             IT student at President University, passionate about building digital experiences and continuously learning in the field of technology.
           </p>
 
-          {/* Teks besar Website Portfolio tanpa hover */}
+          {/* Teks besar Website Portfolio */}
           <h2
             style={{
               fontSize: "3rem",
