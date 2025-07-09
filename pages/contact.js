@@ -1,13 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [captchaText, setCaptchaText] = useState("");
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [isRotating, setIsRotating] = useState(false);
+
+  useEffect(() => {
+    setCaptchaText(generateCaptcha());
+  }, []);
+
+  const generateCaptcha = () => {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let captcha = "";
+    for (let i = 0; i < 5; i++) {
+      captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return captcha;
+  };
+
+  const handleRefresh = () => {
+    if (isRotating) return;
+
+    setCaptchaText(generateCaptcha());
+    setCaptchaInput("");
+    setIsRotating(true);
+
+    setTimeout(() => {
+      setIsRotating(false);
+    }, 500);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
 
+    if (captchaInput !== captchaText) {
+      alert("Captcha incorrect. Please try again.");
+      setCaptchaText(generateCaptcha());
+      setCaptchaInput("");
+      return;
+    }
+
+    setLoading(true);
     const form = e.target;
     const data = new FormData(form);
 
@@ -22,6 +57,8 @@ export default function Contact() {
         if (response.ok) {
           setSubmitted(true);
           form.reset();
+          setCaptchaText(generateCaptcha());
+          setCaptchaInput("");
           setTimeout(() => setSubmitted(false), 5000);
         } else {
           alert("Oops! There was a problem submitting your form.");
@@ -31,13 +68,14 @@ export default function Contact() {
         alert("Oops! There was a problem submitting your form.");
       })
       .finally(() => {
-        setLoading(false);
-      });
+        setTimeout(() => {
+         setLoading(false);
+     }, 500); 
+});
   };
 
   return (
     <>
-      {/* Section judul besar */}
       <section
         style={{
           width: "100%",
@@ -70,7 +108,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Section form */}
       <section
         style={{
           padding: "4rem 1rem",
@@ -79,102 +116,89 @@ export default function Contact() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        <div
-          style={{
-            fontSize: "3rem",
-            marginBottom: "1rem",
-            textAlign: "center",
-          }}
-        >
-          ✉️
-        </div>
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "700",
-            marginBottom: "1rem",
-            textAlign: "center",
-          }}
-        >
+        <div style={{ fontSize: "3rem", marginBottom: "1rem", textAlign: "center" }}>✉️</div>
+        <h2 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "1rem", textAlign: "center" }}>
           Let's get in touch
         </h2>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            marginBottom: "2rem",
-            textAlign: "center",
-          }}
-        >
-          Feel free to send me a message for collaboration, project inquiries,
-          or just to say hello!
+        <p style={{ fontSize: "1.1rem", marginBottom: "2rem", textAlign: "center" }}>
+          Feel free to send me a message for collaboration, project inquiries, or just to say hello!
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            width: "100%",
-          }}
-        >
-          {submitted && (
-            <div className="notif-success">✅ Your message has been sent!</div>
-          )}
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {submitted && <div className="notif-success">✅ Your message has been sent!</div>}
+
+          <input type="text" name="fullName" placeholder="Full Name" required style={inputStyle} />
+          <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
+          <input type="text" name="subject" placeholder="Subject" required style={inputStyle} />
+          <textarea name="message" placeholder="Your Message" required rows="6" style={{ ...inputStyle, resize: "vertical" }}></textarea>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.5rem",
+              marginTop: "1rem",
+            }}
+          >
+            <div
+              style={{
+                background: "repeating-linear-gradient(45deg, #eee, #eee 10px, #ddd 10px, #ddd 20px)",
+                padding: "0.8rem 1.2rem",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+                letterSpacing: "4px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                userSelect: "none",
+              }}
+            >
+              {captchaText}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleRefresh}
+              disabled={isRotating}
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                cursor: isRotating ? "not-allowed" : "pointer",
+                display: "flex",
+                alignItems: "center",
+                padding: "0.3rem",
+              }}
+              className={isRotating ? "refresh-btn rotating" : "refresh-btn"}
+              title="Refresh Captcha"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10"></path>
+                <path d="M20.49 15a9 9 0 0 1-14.13 3.36L1 14"></path>
+              </svg>
+            </button>
+          </div>
 
           <input
             type="text"
-            name="fullName"
-            placeholder="Full Name"
+            placeholder="Enter the text above"
             required
-            style={{
-              padding: "1rem",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              fontSize: "1rem",
-              width: "100%",
-            }}
+            value={captchaInput}
+            onChange={(e) => setCaptchaInput(e.target.value)}
+            style={inputStyle}
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            style={{
-              padding: "1rem",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              fontSize: "1rem",
-              width: "100%",
-            }}
-          />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            required
-            style={{
-              padding: "1rem",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              fontSize: "1rem",
-              width: "100%",
-            }}
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            required
-            rows="6"
-            style={{
-              padding: "1rem",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              fontSize: "1rem",
-              resize: "vertical",
-              width: "100%",
-            }}
-          ></textarea>
+
           <button
             type="submit"
             disabled={loading}
@@ -188,6 +212,10 @@ export default function Contact() {
               fontWeight: "bold",
               cursor: loading ? "not-allowed" : "pointer",
               transition: "background-color 0.3s",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.5rem",
             }}
             onMouseOver={(e) => {
               if (!loading) e.target.style.backgroundColor = "#444";
@@ -198,8 +226,8 @@ export default function Contact() {
           >
             {loading ? (
               <>
-                Sending...
-                <span className="loader"></span>
+                <span>Sending...</span>
+                <span className="loader" />
               </>
             ) : (
               "Send Message"
@@ -246,6 +274,14 @@ export default function Contact() {
           }
         }
 
+        .refresh-btn svg {
+          transition: transform 0.5s ease;
+        }
+
+        .refresh-btn.rotating svg {
+          transform: rotate(360deg);
+        }
+
         @media (max-width: 768px) {
           section h1 {
             font-size: 3rem;
@@ -255,3 +291,11 @@ export default function Contact() {
     </>
   );
 }
+
+const inputStyle = {
+  padding: "1rem",
+  borderRadius: "5px",
+  border: "1px solid #ccc",
+  fontSize: "1rem",
+  width: "100%",
+};
