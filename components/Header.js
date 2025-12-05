@@ -73,7 +73,9 @@ export default function Header() {
         <MenuLink href="/portfolio" title="Portfolio" onClick={() => setMenuOpen(false)} router={router} />
         <MenuLink href="/about" title="About" onClick={() => setMenuOpen(false)} router={router} />
         <MenuLink href="/skill" title="Skills" onClick={() => setMenuOpen(false)} router={router} />
+        <MenuLink href="/experience" title="Experience" onClick={() => setMenuOpen(false)} router={router} />
         <MenuLink href="/contact" title="Contact" onClick={() => setMenuOpen(false)} router={router} />
+        
       </div>
 
       {/* Burger style */}

@@ -1,137 +1,114 @@
-import Head from "next/head";
+import { useState } from "react";
 
 export default function Experience() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const experiences = [
+    {
+      title: "Intern — JSC",
+      img: "/placeholder.jpg", // nanti ganti gambar kamu
+      desc: `Magang sebagai IT Support & Cybersecurity awal 2025. 
+             Belajar ticketing system internal (osTicket), monitoring jaringan, 
+             praktikum keamanan dasar, serta dokumentasi insiden.`,
+    },
+    {
+      title: "Project Web Portfolio",
+      img: "/placeholder.jpg",
+      desc: `Membangun website portfolio Next.js dengan hosting Vercel, docker, 
+             dan formspree untuk pengiriman pesan.`,
+    },
+  ];
+
   return (
-    <>
-      <Head>
-        <title>Experience — My Portfolio</title>
-        <meta name="description" content="Work experience and internship" />
-      </Head>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#111",
+        color: "#f0eadd",
+        paddingTop: "120px",
+        fontFamily: "'Playfair Display', serif",
+      }}
+    >
+      {/* TITLE */}
+      <h1
+        style={{
+          textAlign: "center",
+          fontSize: "6rem",
+          marginBottom: "4rem",
+          letterSpacing: "4px",
+          fontWeight: "bold",
+        }}
+      >
+        EXPERIENCE
+      </h1>
 
-      <section className="exp-section">
+      {/* CARDS */}
+      <div
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          gap: "2rem",
+          padding: "0 4rem 8rem",
+        }}
+      >
+        {experiences.map((exp, index) => (
+          <div
+            key={index}
+            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            style={{
+              background: "#1a1a1a",
+              border: "1px solid #333",
+              borderRadius: "8px",
+              width: "320px",
+              cursor: "pointer",
+              transition: "transform 0.3s ease",
+              transform: openIndex === index ? "scale(1.05)" : "scale(1)",
+            }}
+            className="exp-card"
+          >
+            <img
+              src={exp.img}
+              alt={exp.title}
+              style={{
+                width: "100%",
+                height: "260px",
+                objectFit: "cover",
+                borderBottom: "1px solid #333",
+              }}
+            />
 
-        <div className="container">
-          <h1 className="title">Experience</h1>
+            <div style={{ padding: "1.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "2rem",
+                  marginBottom: "1rem",
+                  color: "#ffce8a",
+                }}
+              >
+                {exp.title}
+              </h2>
 
-          {/* ===== card 1 ===== */}
-          <div className="exp-box">
-            <div className="exp-img-wrapper">
-              <img
-                src="/images/experience/jsc.webp" 
-                alt="JSC Internship"
-                className="exp-img"
-              />
-            </div>
-            <div className="exp-text">
-              <h2>Cybersecurity Internship — JSC</h2>
-              <span className="exp-year">2025</span>
-              <p>
-                Working with internal ticketing system using OS Ticket, documenting
-                incidents, handling IT issues, and learning corporate security posture.
-              </p>
+              {openIndex === index && (
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: "1.5",
+                    opacity: 0.9,
+                  }}
+                >
+                  {exp.desc}
+                </p>
+              )}
             </div>
           </div>
-
-          {/* ===== card 2 ===== */}
-          <div className="exp-box">
-            <div className="exp-img-wrapper">
-              <img
-                src="/images/experience/project.webp"
-                alt="Personal Projects"
-                className="exp-img"
-              />
-            </div>
-            <div className="exp-text">
-              <h2>Personal Projects</h2>
-              <span className="exp-year">2024</span>
-              <p>
-                Built a retro portfolio website, full Vercel deployment, Docker basics,
-                and Formspree integration for contact form handling.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
+        ))}
+      </div>
 
       <style jsx>{`
-        /* ===== background sama page lain ===== */
-        .exp-section {
-          min-height: 100vh;
-          padding: 120px 0;
-          background: url("/textures/bg-dark.webp");
-          background-size: cover;
-          background-repeat: repeat;
-          color: #fff;
-        }
-
-        .container {
-          width: 85%;
-          max-width: 1100px;
-          margin: auto;
-        }
-
-        .title {
-          font-size: 3rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          margin-bottom: 60px;
-          letter-spacing: 2px;
-        }
-
-        /* ===== EXPERIENCE CARD ===== */
-        .exp-box {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 30px;
-          background: rgba(20, 20, 20, 0.85);
-          border: 1px solid #333;
-          border-radius: 18px;
-          padding: 30px;
-          margin-bottom: 50px;
-        }
-
-        .exp-img-wrapper {
-          width: 100%;
-          height: 220px;
-          overflow: hidden;
-          border-radius: 12px;
-          border: 1px solid #444;
-        }
-
-        .exp-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .exp-text h2 {
-          font-size: 1.6rem;
-          margin-bottom: 8px;
-        }
-
-        .exp-year {
-          color: #ff4d00;
-          font-weight: 700;
-          margin-bottom: 14px;
-          display: inline-block;
-        }
-
-        .exp-text p {
-          opacity: 0.85;
-          line-height: 1.6;
-        }
-
-        @media(max-width: 768px) {
-          .exp-box {
-            grid-template-columns: 1fr;
-          }
-          .exp-img-wrapper {
-            height: 180px;
-          }
+        .exp-card:hover {
+          transform: scale(1.05);
         }
       `}</style>
-    </>
+    </div>
   );
 }
