@@ -5,115 +5,131 @@ export default function Experience() {
     <>
       <Head>
         <title>Experience — My Portfolio</title>
-        <meta name="description" content="Internship and work experience" />
+        <meta name="description" content="Work experience and internship" />
       </Head>
 
-      <section className="experience-page">
+      <section className="exp-section">
+
         <div className="container">
           <h1 className="title">Experience</h1>
 
-          <div className="timeline">
-
-            <div className="timeline-item" data-aos="fade-right">
-              <div className="timeline-date">2025</div>
-              <div className="timeline-content">
-                <img
-                  src="https://source.unsplash.com/600x400/?cybersecurity,office"
-                  alt="Experience"
-                  className="exp-img"
-                />
-                <h2>Cybersecurity Internship – JSC</h2>
-                <p>
-                  Working on internal ticketing system using OS Ticket, improving
-                  documentation, learning security posture in a corporate IT environment,
-                  handling user issues, and collaborating with IT teams.
-                </p>
-              </div>
+          {/* ===== card 1 ===== */}
+          <div className="exp-box">
+            <div className="exp-img-wrapper">
+              <img
+                src="/images/experience/jsc.webp" 
+                alt="JSC Internship"
+                className="exp-img"
+              />
             </div>
-
-            <div className="timeline-item" data-aos="fade-left">
-              <div className="timeline-date">2024</div>
-              <div className="timeline-content">
-                <img
-                  src="https://source.unsplash.com/600x400/?computer,laptop"
-                  alt="Experience"
-                  className="exp-img"
-                />
-                <h2>Personal Projects</h2>
-                <p>
-                  Building a retro-style portfolio, creating web applications using Next.js,
-                  Docker basics, Git workflow, Formspree integration, and UI animations.
-                </p>
-              </div>
+            <div className="exp-text">
+              <h2>Cybersecurity Internship — JSC</h2>
+              <span className="exp-year">2025</span>
+              <p>
+                Working with internal ticketing system using OS Ticket, documenting
+                incidents, handling IT issues, and learning corporate security posture.
+              </p>
             </div>
-
           </div>
+
+          {/* ===== card 2 ===== */}
+          <div className="exp-box">
+            <div className="exp-img-wrapper">
+              <img
+                src="/images/experience/project.webp"
+                alt="Personal Projects"
+                className="exp-img"
+              />
+            </div>
+            <div className="exp-text">
+              <h2>Personal Projects</h2>
+              <span className="exp-year">2024</span>
+              <p>
+                Built a retro portfolio website, full Vercel deployment, Docker basics,
+                and Formspree integration for contact form handling.
+              </p>
+            </div>
+          </div>
+
         </div>
 
       </section>
 
       <style jsx>{`
-        .experience-page {
+        /* ===== background sama page lain ===== */
+        .exp-section {
+          min-height: 100vh;
           padding: 120px 0;
-          background: #111;
+          background: url("/textures/bg-dark.webp");
+          background-size: cover;
+          background-repeat: repeat;
           color: #fff;
         }
 
         .container {
           width: 85%;
-          max-width: 1200px;
+          max-width: 1100px;
           margin: auto;
         }
 
         .title {
           font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 40px;
+          font-weight: 800;
           text-transform: uppercase;
+          margin-bottom: 60px;
           letter-spacing: 2px;
         }
 
-        .timeline {
-          position: relative;
-          margin-left: 20px;
-          border-left: 2px solid #ff4d00;
-          padding-left: 40px;
-        }
-
-        .timeline-item {
-          margin-bottom: 60px;
-          position: relative;
-        }
-
-        .timeline-date {
-          font-size: 1rem;
-          font-weight: bold;
-          color: #ff4d00;
-          margin-bottom: 10px;
-        }
-
-        .timeline-content {
-          background: #1a1a1a;
-          padding: 20px;
-          border-radius: 12px;
+        /* ===== EXPERIENCE CARD ===== */
+        .exp-box {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: 30px;
+          background: rgba(20, 20, 20, 0.85);
           border: 1px solid #333;
+          border-radius: 18px;
+          padding: 30px;
+          margin-bottom: 50px;
+        }
+
+        .exp-img-wrapper {
+          width: 100%;
+          height: 220px;
+          overflow: hidden;
+          border-radius: 12px;
+          border: 1px solid #444;
         }
 
         .exp-img {
           width: 100%;
-          height: auto;
-          border-radius: 10px;
-          margin-bottom: 15px;
+          height: 100%;
+          object-fit: cover;
         }
 
-        h2 {
-          font-size: 1.5rem;
-          margin-bottom: 10px;
+        .exp-text h2 {
+          font-size: 1.6rem;
+          margin-bottom: 8px;
         }
 
-        p {
+        .exp-year {
+          color: #ff4d00;
+          font-weight: 700;
+          margin-bottom: 14px;
+          display: inline-block;
+        }
+
+        .exp-text p {
+          opacity: 0.85;
           line-height: 1.6;
-          opacity: 0.9;
+        }
+
+        @media(max-width: 768px) {
+          .exp-box {
+            grid-template-columns: 1fr;
+          }
+          .exp-img-wrapper {
+            height: 180px;
+          }
         }
       `}</style>
     </>
