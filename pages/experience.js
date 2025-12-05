@@ -6,7 +6,7 @@ export default function Experience() {
   const experiences = [
     {
       title: "Intern — JSC",
-      img: "/placeholder.jpg", // nanti ganti gambar kamu
+      img: "/profile.jpg",
       desc: `Magang sebagai IT Support & Cybersecurity awal 2025. 
              Belajar ticketing system internal (osTicket), monitoring jaringan, 
              praktikum keamanan dasar, serta dokumentasi insiden.`,
