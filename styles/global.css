@@ -94,7 +94,7 @@ nav a:hover {
   bottom: -5px;
   width: 0%;
   height: 2px;
-  background-color: #ff4a00; /* Warna merah seperti di web asli */
+  background-color: #ff4a00;
   transition: width 0.3s ease;
 }
 
