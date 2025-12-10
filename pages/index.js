@@ -28,7 +28,7 @@ export default function Home() {
         <div className="wanted-container">
           <div className={mounted ? "poster animate" : "poster"}>
             <Image
-              src="/images/profile.png"
+              src="/images/poster.png"
               alt="Wanted Poster"
               width={450}
               height={600}
