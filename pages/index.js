@@ -29,7 +29,6 @@ export default function Home() {
           <div className={mounted ? "poster animate" : "poster"}>
             <Image
               src="/images/wanted.png"
-              alt="wanted Poster"
               width={450}
               height={600}
               style={{ width: "100%", height: "auto" }}
