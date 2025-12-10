@@ -58,7 +58,6 @@ export default function Experience() {
 
   return (
     <>
-      {/* ===== MAIN SECTION ===== */}
       <div
         style={{
           minHeight: "100vh",
@@ -66,7 +65,6 @@ export default function Experience() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        {/* ===== TITLE ===== */}
         <div
           style={{
             maxWidth: "1200px",
@@ -84,7 +82,6 @@ export default function Experience() {
           EXPERIENCE
         </div>
 
-        {/* ===== CARDS ===== */}
         <div
           style={{
             display: "flex",
@@ -107,32 +104,49 @@ export default function Experience() {
                   background: "#111",
                   color: "#eec78a",
                   padding: "1.5rem",
-                  borderRadius: "12px",
+                  borderRadius: "14px",
                   cursor: "pointer",
-                  transition: "all 0.45s ease",
-                  boxShadow: isOpen
-                    ? "0 0 35px rgba(255,180,80,0.4)"
-                    : "0 6px 18px rgba(0,0,0,0.4)",
-                  transform: isOpen ? "scale(1.02)" : "scale(1)",
                   overflow: "hidden",
+
+                  willChange: "width, max-height, transform, box-shadow",
+
+                  transition: `
+                    width 0.6s cubic-bezier(0.25, 1, 0.3, 1),
+                    max-height 0.65s cubic-bezier(0.25, 1, 0.3, 1),
+                    transform 0.55s cubic-bezier(0.25, 1, 0.3, 1),
+                    box-shadow 0.65s ease
+                  `,
+
+                  boxShadow: isOpen
+                    ? "0 0 45px rgba(255,180,80,0.45)"
+                    : "0 8px 20px rgba(0,0,0,0.35)",
+                  transform: isOpen ? "scale(1.025)" : "scale(1)",
                   border: isOpen
                     ? "1px solid rgba(255,200,120,0.35)"
                     : "1px solid transparent",
+
+                  maxHeight: isOpen ? "950px" : "350px",
                 }}
               >
                 {/* IMAGE */}
                 <Image
                   src={exp.img}
-                  width={800}
-                  height={isOpen ? 380 : 260}
+                  width={1600}
+                  height={isOpen ? 420 : 260}
                   alt={exp.title}
                   style={{
                     borderRadius: "12px",
                     marginBottom: "1.2rem",
                     objectFit: "cover",
                     width: "100%",
-                    height: isOpen ? "380px" : "260px",
-                    transition: "all 0.4s ease",
+                    height: isOpen ? "420px" : "260px",
+
+                    willChange: "height, filter",
+                    transition: `
+                      height 0.65s cubic-bezier(0.25, 1, 0.3, 1),
+                      filter 0.4s ease
+                    `,
+                    filter: isOpen ? "brightness(105%)" : "brightness(95%)",
                   }}
                 />
 
@@ -145,46 +159,40 @@ export default function Experience() {
                     marginBottom: "0.6rem",
                   }}
                 >
-                  <h2
-                    style={{
-                      fontSize: "2rem",
-                      fontWeight: "bold",
-                    }}
-                  >
+                  <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
                     {exp.title}
                   </h2>
 
                   <ChevronDown
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.3s ease",
+                      transition: "transform 0.55s cubic-bezier(0.25, 1, 0.3, 1)",
                     }}
                   />
                 </div>
 
-                {/* DESC */}
+                {/* DESCRIPTION */}
                 <p
                   style={{
                     fontSize: "1.1rem",
                     lineHeight: 1.6,
-                    opacity: isOpen ? 1 : 0.85,
-                    transition: "all 0.4s ease",
-                    transform: isOpen
-                      ? "translateY(0px)"
-                      : "translateY(2px)",
+                    opacity: isOpen ? 1 : 0,
+                    transition: `opacity 0.5s ease ${isOpen ? "0.1s" : "0s"}, transform 0.5s ease`,
+                    transform: isOpen ? "translateY(0)" : "translateY(10px)",
+                    paddingBottom: isOpen ? "0.5rem" : "0",
                   }}
                 >
                   {isOpen ? exp.longDesc : exp.shortDesc}
                 </p>
 
-                {/* UNDERLINE ANIMATION */}
+                {/* UNDERLINE */}
                 <div
                   style={{
                     marginTop: "1rem",
                     height: "2px",
                     background: "linear-gradient(to right, #eec78a, transparent)",
                     width: isOpen ? "100%" : "0%",
-                    transition: "width 0.45s ease",
+                    transition: "width 0.6s cubic-bezier(0.25, 1, 0.3, 1) 0.15s",
                   }}
                 ></div>
               </div>
@@ -193,7 +201,7 @@ export default function Experience() {
         </div>
       </div>
 
-      {/* ===== BOTTOM MARQUEE TETAP SAMA ===== */}
+      {/* BOTTOM MARQUEE */}
       <div
         style={{
           width: "100%",
