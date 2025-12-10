@@ -28,8 +28,8 @@ export default function Home() {
         <div className="wanted-container">
           <div className={mounted ? "poster animate" : "poster"}>
             <Image
-              src="/images/wanted.png"
-              alt="Wanted Poster"
+              src="/images/Wanted.png"
+              alt="wanted Poster"
               width={450}
               height={600}
               style={{ width: "100%", height: "auto" }}
