@@ -8,6 +8,7 @@ export default function Experience() {
   const experiences = [
     {
       title: "Intern — JSC",
+      year: "2025",
       img: "/images/project4.png",
       shortDesc:
         "Magang sebagai IT Support & Cybersecurity awal 2025. Belajar ticketing system internal, monitoring jaringan, dokumentasi insiden, dan keamanan dasar.",
@@ -16,35 +17,39 @@ export default function Experience() {
     },
     {
       title: "Project Web Portfolio",
+      year: "2025",
       img: "/images/project4.png",
       shortDesc:
         "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
       longDesc:
-        "Membuat portfolio modern menggunakan Next.js, styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
     },
     {
       title: "Project Web Portfolio",
+      year: "2025",
       img: "/images/project4.png",
       shortDesc:
         "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
       longDesc:
-        "Membuat portfolio modern menggunakan Next.js, styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
     },
     {
       title: "Project Web Portfolio",
+      year: "2025",
       img: "/images/project4.png",
       shortDesc:
         "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
       longDesc:
-        "Membuat portfolio modern menggunakan Next.js, styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
     },
     {
       title: "Project Web Portfolio",
+      year: "2025",
       img: "/images/project4.png",
       shortDesc:
         "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
       longDesc:
-        "Membuat portfolio modern menggunakan Next.js, styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
     },
   ];
 
@@ -65,23 +70,24 @@ export default function Experience() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
+        {/* TITLE EXPERIENCE */}
         <div
           style={{
             maxWidth: "1200px",
             margin: "0 auto 4rem",
-            background: "#111",
-            color: "#f0eadd",
+            background: "#222",
+            color: "#fff",
             padding: "1rem 3rem",
             fontSize: "4.5rem",
             fontWeight: "bold",
             letterSpacing: "5px",
-            border: "2px solid #222",
             textAlign: "center",
           }}
         >
           EXPERIENCE
         </div>
 
+        {/* EXPERIENCE CARDS */}
         <div
           style={{
             display: "flex",
@@ -101,33 +107,33 @@ export default function Experience() {
                 style={{
                   width: isOpen ? "90%" : "400px",
                   maxWidth: "1000px",
-                  background: "#111",
-                  color: "#eec78a",
+                  background: "#e7dbc8",
+                  color: "#3a2f25",
                   padding: "1.5rem",
                   borderRadius: "14px",
                   cursor: "pointer",
                   overflow: "hidden",
-
-                  willChange: "width, max-height, transform, box-shadow",
-
-                  transition: `
-                    width 0.6s cubic-bezier(0.25, 1, 0.3, 1),
-                    max-height 0.65s cubic-bezier(0.25, 1, 0.3, 1),
-                    transform 0.55s cubic-bezier(0.25, 1, 0.3, 1),
-                    box-shadow 0.65s ease
-                  `,
-
-                  boxShadow: isOpen
-                    ? "0 0 45px rgba(255,180,80,0.45)"
-                    : "0 8px 20px rgba(0,0,0,0.35)",
-                  transform: isOpen ? "scale(1.025)" : "scale(1)",
-                  border: isOpen
-                    ? "1px solid rgba(255,200,120,0.35)"
-                    : "1px solid transparent",
-
+                  position: "relative",
                   maxHeight: isOpen ? "950px" : "350px",
+                  transform: isOpen ? "scale(1.025)" : "scale(1)",
+                  transition:
+                    "all 0.6s cubic-bezier(0.25, 1, 0.3, 1)",
+                  boxShadow: isOpen
+                    ? "0 0 45px rgba(0, 0, 0, 0.45)"
+                    : "0 8px 20px rgba(0,0,0,0.35)",
                 }}
               >
+                {/* stitched border */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: "8px",
+                    border: "2px dashed #5e4b31",
+                    borderRadius: "10px",
+                    pointerEvents: "none",
+                  }}
+                />
+
                 {/* IMAGE */}
                 <Image
                   src={exp.img}
@@ -135,38 +141,47 @@ export default function Experience() {
                   height={isOpen ? 420 : 260}
                   alt={exp.title}
                   style={{
-                    borderRadius: "12px",
-                    marginBottom: "1.2rem",
-                    objectFit: "cover",
                     width: "100%",
                     height: isOpen ? "420px" : "260px",
-
-                    willChange: "height, filter",
-                    transition: `
-                      height 0.65s cubic-bezier(0.25, 1, 0.3, 1),
-                      filter 0.4s ease
-                    `,
-                    filter: isOpen ? "brightness(105%)" : "brightness(95%)",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                    marginBottom: "1.2rem",
                   }}
                 />
 
-                {/* TITLE + ICON */}
+                {/* TITLE + YEAR + ICON */}
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    alignItems: "center",
+                    alignItems: "flex-start",
                     marginBottom: "0.6rem",
                   }}
                 >
-                  <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
-                    {exp.title}
-                  </h2>
+                  <div>
+                    <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
+                      {exp.title}
+                    </h2>
+
+                    {/* YEAR — GEDE & HILANG SAAT OPEN */}
+                    {!isOpen && (
+                      <div
+                        style={{
+                          fontSize: "1.2rem",
+                          marginTop: "4px",
+                          letterSpacing: "2px",
+                          opacity: 0.85,
+                        }}
+                      >
+                        {exp.year}
+                      </div>
+                    )}
+                  </div>
 
                   <ChevronDown
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.55s cubic-bezier(0.25, 1, 0.3, 1)",
+                      transition: "transform 0.4s ease",
                     }}
                   />
                 </div>
@@ -177,9 +192,10 @@ export default function Experience() {
                     fontSize: "1.1rem",
                     lineHeight: 1.6,
                     opacity: isOpen ? 1 : 0,
-                    transition: `opacity 0.5s ease ${isOpen ? "0.1s" : "0s"}, transform 0.5s ease`,
-                    transform: isOpen ? "translateY(0)" : "translateY(10px)",
-                    paddingBottom: isOpen ? "0.5rem" : "0",
+                    transform: isOpen
+                      ? "translateY(0)"
+                      : "translateY(10px)",
+                    transition: "all 0.5s ease",
                   }}
                 >
                   {isOpen ? exp.longDesc : exp.shortDesc}
@@ -190,18 +206,19 @@ export default function Experience() {
                   style={{
                     marginTop: "1rem",
                     height: "2px",
-                    background: "linear-gradient(to right, #eec78a, transparent)",
+                    background:
+                      "linear-gradient(to right, #000000ff, transparent)",
                     width: isOpen ? "100%" : "0%",
-                    transition: "width 0.6s cubic-bezier(0.25, 1, 0.3, 1) 0.15s",
+                    transition: "width 0.6s ease",
                   }}
-                ></div>
+                />
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* BOTTOM MARQUEE */}
+      {/* MARQUEE — ORIGINAL — TIDAK DISENTUH */}
       <div
         style={{
           width: "100%",
