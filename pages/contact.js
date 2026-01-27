@@ -49,9 +49,7 @@ export default function Contact() {
     fetch("https://formspree.io/f/mpwrepdq", {
       method: "POST",
       body: data,
-      headers: {
-        Accept: "application/json",
-      },
+      headers: { Accept: "application/json" },
     })
       .then((response) => {
         if (response.ok) {
@@ -68,14 +66,13 @@ export default function Contact() {
         alert("Oops! There was a problem submitting your form.");
       })
       .finally(() => {
-        setTimeout(() => {
-         setLoading(false);
-     }, 500); 
-});
+        setTimeout(() => setLoading(false), 500);
+      });
   };
 
   return (
     <>
+      {/* TITLE SECTION — RESPONSIVE FIX */}
       <section
         style={{
           width: "100%",
@@ -89,7 +86,7 @@ export default function Contact() {
           style={{
             maxWidth: "1200px",
             width: "100%",
-            padding: "0 2rem",
+            padding: "1rem clamp(1.5rem, 4vw, 3rem)",
             backgroundColor: "#222",
             color: "#fff",
             textAlign: "center",
@@ -97,10 +94,12 @@ export default function Contact() {
         >
           <h1
             style={{
-              fontSize: "6rem",
+              fontSize: "clamp(2.8rem, 8vw, 6rem)",
               fontWeight: "700",
               fontFamily: "'Playfair Display', serif",
               margin: 0,
+              letterSpacing: "4px",
+              wordBreak: "break-word",
             }}
           >
             CONTACT
@@ -108,6 +107,7 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* FORM */}
       <section
         style={{
           padding: "4rem 1rem",
@@ -116,25 +116,54 @@ export default function Contact() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        <div style={{ fontSize: "3rem", marginBottom: "1rem", textAlign: "center" }}>✉️</div>
-        <h2 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "1rem", textAlign: "center" }}>
+        <div style={{ fontSize: "3rem", marginBottom: "1rem", textAlign: "center" }}>
+          ✉️
+        </div>
+
+        <h2
+          style={{
+            fontSize: "1.8rem",
+            fontWeight: "700",
+            marginBottom: "1rem",
+            textAlign: "center",
+          }}
+        >
           Let's get in touch
         </h2>
-        <p style={{ fontSize: "1.1rem", marginBottom: "2rem", textAlign: "center" }}>
+
+        <p
+          style={{
+            fontSize: "1.1rem",
+            marginBottom: "2rem",
+            textAlign: "center",
+            lineHeight: 1.6,
+          }}
+        >
           Feel free to send me a message for collaboration, project inquiries, or just to say hello!
         </p>
 
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+        >
           {submitted && <div className="notif-success">✅ Your message has been sent!</div>}
 
           <input type="text" name="fullName" placeholder="Full Name" required style={inputStyle} />
           <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
           <input type="text" name="subject" placeholder="Subject" required style={inputStyle} />
-          <textarea name="message" placeholder="Your Message" required rows="6" style={{ ...inputStyle, resize: "vertical" }}></textarea>
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+            rows="6"
+            style={{ ...inputStyle, resize: "vertical" }}
+          />
 
+          {/* CAPTCHA */}
           <div
             style={{
               display: "flex",
+              flexWrap: "wrap",
               alignItems: "center",
               justifyContent: "center",
               gap: "0.5rem",
@@ -143,9 +172,10 @@ export default function Contact() {
           >
             <div
               style={{
-                background: "repeating-linear-gradient(45deg, #eee, #eee 10px, #ddd 10px, #ddd 20px)",
+                background:
+                  "repeating-linear-gradient(45deg, #eee, #eee 10px, #ddd 10px, #ddd 20px)",
                 padding: "0.8rem 1.2rem",
-                fontSize: "1.5rem",
+                fontSize: "1.4rem",
                 fontWeight: "bold",
                 letterSpacing: "4px",
                 border: "1px solid #ccc",
@@ -160,16 +190,13 @@ export default function Contact() {
               type="button"
               onClick={handleRefresh}
               disabled={isRotating}
+              className={isRotating ? "refresh-btn rotating" : "refresh-btn"}
               style={{
-                backgroundColor: "transparent",
+                background: "transparent",
                 border: "none",
                 cursor: isRotating ? "not-allowed" : "pointer",
-                display: "flex",
-                alignItems: "center",
                 padding: "0.3rem",
               }}
-              className={isRotating ? "refresh-btn rotating" : "refresh-btn"}
-              title="Refresh Captcha"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -182,10 +209,10 @@ export default function Contact() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <polyline points="1 20 1 14 7 14"></polyline>
-                <path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10"></path>
-                <path d="M20.49 15a9 9 0 0 1-14.13 3.36L1 14"></path>
+                <polyline points="23 4 23 10 17 10" />
+                <polyline points="1 20 1 14 7 14" />
+                <path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10" />
+                <path d="M20.49 15a9 9 0 0 1-14.13 3.36L1 14" />
               </svg>
             </button>
           </div>
@@ -211,17 +238,10 @@ export default function Contact() {
               fontSize: "1.2rem",
               fontWeight: "bold",
               cursor: loading ? "not-allowed" : "pointer",
-              transition: "background-color 0.3s",
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
+              alignItems: "center",
               gap: "0.5rem",
-            }}
-            onMouseOver={(e) => {
-              if (!loading) e.target.style.backgroundColor = "#444";
-            }}
-            onMouseOut={(e) => {
-              if (!loading) e.target.style.backgroundColor = "#222";
             }}
           >
             {loading ? (
@@ -236,6 +256,7 @@ export default function Contact() {
         </form>
       </section>
 
+      {/* STYLES */}
       <style jsx>{`
         .notif-success {
           background-color: green;
@@ -249,11 +270,11 @@ export default function Contact() {
         }
 
         @keyframes fadeInScale {
-          0% {
+          from {
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.85);
           }
-          100% {
+          to {
             opacity: 1;
             transform: scale(1);
           }
@@ -280,12 +301,6 @@ export default function Contact() {
 
         .refresh-btn.rotating svg {
           transform: rotate(360deg);
-        }
-
-        @media (max-width: 768px) {
-          section h1 {
-            font-size: 3rem;
-          }
         }
       `}</style>
     </>

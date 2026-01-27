@@ -50,23 +50,39 @@ export default function Experience() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        {/* TITLE — FIXED FOR MOBILE */}
-        <div
+        {/* TITLE SECTION — SAME STRUCTURE AS CONTACT */}
+        <section
+          className="experience-title-section"
           style={{
-            maxWidth: "1200px",
-            margin: "0 auto 4rem",
-            background: "#222",
-            color: "#fff",
-            padding: "1rem clamp(1.5rem, 4vw, 3rem)",
-            fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
-            fontWeight: "bold",
-            letterSpacing: "4px",
-            textAlign: "center",
-            wordBreak: "break-word",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 1rem",
           }}
         >
-          EXPERIENCE
-        </div>
+          <div
+            style={{
+              maxWidth: "1200px",
+              width: "100%",
+              background: "#222",
+              color: "#fff",
+              textAlign: "center",
+              padding: "1rem clamp(1.5rem, 4vw, 3rem)",
+            }}
+          >
+            <h1
+              style={{
+                fontSize: "clamp(2.8rem, 8vw, 6rem)",
+                fontWeight: "700",
+                margin: 0,
+                letterSpacing: "5px",
+                wordBreak: "break-word",
+              }}
+            >
+              EXPERIENCE
+            </h1>
+          </div>
+        </section>
 
         {/* CARDS */}
         <div
@@ -167,7 +183,6 @@ export default function Experience() {
             padding: "2rem",
             borderRadius: "18px",
             zIndex: 50,
-            fontFamily: "'Playfair Display', serif",
             boxShadow: "0 25px 70px rgba(0,0,0,0.55)",
             animation: "fadeInScale 0.5s ease",
           }}
@@ -207,9 +222,7 @@ export default function Experience() {
             {showClose && (
               <X
                 onClick={() => setActiveIndex(null)}
-                style={{
-                  cursor: "pointer",
-                }}
+                style={{ cursor: "pointer" }}
               />
             )}
           </div>
@@ -226,7 +239,7 @@ export default function Experience() {
         </div>
       )}
 
-      {/* MARQUEE */}
+      {/* MARQUEE — TIDAK DISENTUH */}
       <div
         style={{
           width: "100%",
