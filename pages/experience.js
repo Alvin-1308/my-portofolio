@@ -19,23 +19,24 @@ export default function Experience() {
       title: "Intern — JSC",
       year: "2025",
       img: "/images/internjsc.jpeg",
-      shortDesc: "Infrastructure, cybersecurity, and enterprise IT environment learning experience.",
+      shortDesc:
+        "Infrastructure, cybersecurity, and enterprise IT environment learning experience.",
       longDesc:
         "During my internship at JSC, I learned and observed the internal working environment, especially in the infrastructure division. I gained an understanding of IT infrastructure management in a professional setting. I also participated in ISO-related meetings and learned about information security practices, including the implementation of Web Application Firewall (WAF). Additionally, I joined the IoT team for field visits to check CCTV systems and sensors at a pump house facility.",
     },
     {
-      title: "Coming soon",
-      year: "To Be Continued…",
+      title: "Coming Soon",
+      year: "2027",
       img: "/images/comingsoon.jpg",
-      shortDesc: "New project in progress.",
-      longDesc: "Details will be available soon.",
+      shortDesc: "Something exciting is being prepared.",
+      longDesc: "More details will be revealed when the time is right.",
     },
     {
-      title: "Coming soon",
-      year: "To Be Continued…",
+      title: "Coming Soon",
+      year: "2027",
       img: "/images/comingsoon.jpg",
-      shortDesc: "New project in progress.",
-      longDesc: "Details will be available soon.",
+      shortDesc: "Another story in progress.",
+      longDesc: "Stay tuned for future updates.",
     },
   ];
 
@@ -49,18 +50,19 @@ export default function Experience() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        {/* TITLE */}
+        {/* TITLE — FIXED FOR MOBILE */}
         <div
           style={{
             maxWidth: "1200px",
             margin: "0 auto 4rem",
             background: "#222",
             color: "#fff",
-            padding: "1rem 3rem",
-            fontSize: "4.5rem",
+            padding: "1rem clamp(1.5rem, 4vw, 3rem)",
+            fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
             fontWeight: "bold",
-            letterSpacing: "5px",
+            letterSpacing: "4px",
             textAlign: "center",
+            wordBreak: "break-word",
           }}
         >
           EXPERIENCE
@@ -82,6 +84,7 @@ export default function Experience() {
               onClick={() => setActiveIndex(index)}
               style={{
                 width: "380px",
+                maxWidth: "100%",
                 background: "#e7dbc8",
                 color: "#3a2f25",
                 padding: "1.5rem",
@@ -122,7 +125,7 @@ export default function Experience() {
 
               <div
                 style={{
-                  fontSize: "1.2rem",
+                  fontSize: "1.1rem",
                   opacity: 0.8,
                   letterSpacing: "2px",
                 }}
@@ -136,7 +139,7 @@ export default function Experience() {
         </div>
       </div>
 
-      {/* OVERLAY (NO CLICK CLOSE) */}
+      {/* OVERLAY */}
       {activeIndex !== null && (
         <div
           style={{
@@ -157,7 +160,7 @@ export default function Experience() {
             top: "54%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "88%",
+            width: "90%",
             maxWidth: "900px",
             background: "#e7dbc8",
             color: "#3a2f25",
@@ -189,10 +192,11 @@ export default function Experience() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              gap: "1rem",
             }}
           >
             <div>
-              <h2 style={{ fontSize: "2.2rem", fontWeight: "bold" }}>
+              <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
                 {experiences[activeIndex].title}
               </h2>
               <div style={{ opacity: 0.7 }}>
@@ -205,7 +209,6 @@ export default function Experience() {
                 onClick={() => setActiveIndex(null)}
                 style={{
                   cursor: "pointer",
-                  animation: "fadeInClose 0.4s ease",
                 }}
               />
             )}
@@ -214,7 +217,7 @@ export default function Experience() {
           <p
             style={{
               marginTop: "1.5rem",
-              fontSize: "1.1rem",
+              fontSize: "1.05rem",
               lineHeight: 1.7,
             }}
           >
@@ -223,7 +226,7 @@ export default function Experience() {
         </div>
       )}
 
-      {/* MARQUEE — ORIGINAL (DIKEMBALIKAN FULL) */}
+      {/* MARQUEE */}
       <div
         style={{
           width: "100%",
@@ -234,19 +237,6 @@ export default function Experience() {
         }}
       >
         <p className="marquee-text">
-          <a
-            href="/contact"
-            style={{
-              textDecoration: "none",
-              color: "#fff",
-              backgroundColor: "#222",
-              padding: "0.3rem 0.6rem",
-              display: "inline-block",
-            }}
-          >
-            EMAIL ME
-          </a>{" "}
-          • LET'S CREATE SOMETHING TOGETHER •{" "}
           <a
             href="/contact"
             style={{
@@ -286,17 +276,6 @@ export default function Experience() {
           to {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
-          }
-        }
-
-        @keyframes fadeInClose {
-          from {
-            opacity: 0;
-            transform: scale(0.6);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
           }
         }
       `}</style>
