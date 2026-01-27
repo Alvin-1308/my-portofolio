@@ -26,14 +26,14 @@ export default function Experience() {
     },
     {
       title: "Coming Soon",
-      year: "2027",
+      year: "To Be Continued…",
       img: "/images/comingsoon.jpg",
       shortDesc: "Something exciting is being prepared.",
       longDesc: "More details will be revealed when the time is right.",
     },
     {
       title: "Coming Soon",
-      year: "2027",
+      year: "To Be Continued…",
       img: "/images/comingsoon.jpg",
       shortDesc: "Another story in progress.",
       longDesc: "Stay tuned for future updates.",
