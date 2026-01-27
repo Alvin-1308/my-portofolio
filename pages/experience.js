@@ -1,68 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 
 export default function Experience() {
-  const [openCards, setOpenCards] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [showClose, setShowClose] = useState(false);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      setShowClose(false);
+      const timer = setTimeout(() => setShowClose(true), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [activeIndex]);
 
   const experiences = [
     {
       title: "Intern — JSC",
       year: "2025",
-      img: "/images/project4.png",
-      shortDesc:
-        "Magang sebagai IT Support & Cybersecurity awal 2025. Belajar ticketing system internal, monitoring jaringan, dokumentasi insiden, dan keamanan dasar.",
+      img: "/images/internjsc.jpeg",
+      shortDesc: "Infrastructure, cybersecurity, and enterprise IT environment learning experience.",
       longDesc:
-        "Selama magang di JSC (2025), saya mempelajari ticketing system menggunakan osTicket, troubleshooting jaringan LAN & WiFi, instalasi software, manajemen akses, serta membuat dokumentasi insiden keamanan dasar. Selain itu saya memahami workflow internal IT support dan praktik dasar cybersecurity.",
+        "During my internship at JSC, I learned and observed the internal working environment, especially in the infrastructure division. I gained an understanding of IT infrastructure management in a professional setting. I also participated in ISO-related meetings and learned about information security practices, including the implementation of Web Application Firewall (WAF). Additionally, I joined the IoT team for field visits to check CCTV systems and sensors at a pump house facility.",
     },
     {
-      title: "Project Web Portfolio",
-      year: "2025",
-      img: "/images/project4.png",
-      shortDesc:
-        "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
-      longDesc:
-        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+      title: "Coming soon",
+      year: "To Be Continued…",
+      img: "/images/comingsoon.jpg",
+      shortDesc: "New project in progress.",
+      longDesc: "Details will be available soon.",
     },
     {
-      title: "Project Web Portfolio",
-      year: "2025",
-      img: "/images/project4.png",
-      shortDesc:
-        "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
-      longDesc:
-        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
-    },
-    {
-      title: "Project Web Portfolio",
-      year: "2025",
-      img: "/images/project4.png",
-      shortDesc:
-        "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
-      longDesc:
-        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
-    },
-    {
-      title: "Project Web Portfolio",
-      year: "2025",
-      img: "/images/project4.png",
-      shortDesc:
-        "Membangun website portfolio berbasis Next.js, dengan animasi GSAP, deploy menggunakan Vercel.",
-      longDesc:
-        "Membuat portfolio modern menggunakan Next.js (2025), styling custom dan animasi GSAP, integrasi Formspree, serta deploy di Vercel. Desain terinspirasi pendekatan experimental scrolling.",
+      title: "Coming soon",
+      year: "To Be Continued…",
+      img: "/images/comingsoon.jpg",
+      shortDesc: "New project in progress.",
+      longDesc: "Details will be available soon.",
     },
   ];
 
-  const handleClick = (index) => {
-    if (openCards.includes(index)) {
-      setOpenCards(openCards.filter((i) => i !== index));
-    } else {
-      setOpenCards([...openCards, index]);
-    }
-  };
-
   return (
     <>
+      {/* PAGE */}
       <div
         style={{
           minHeight: "100vh",
@@ -70,7 +49,7 @@ export default function Experience() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        {/* TITLE EXPERIENCE */}
+        {/* TITLE */}
         <div
           style={{
             maxWidth: "1200px",
@@ -87,138 +66,164 @@ export default function Experience() {
           EXPERIENCE
         </div>
 
-        {/* EXPERIENCE CARDS */}
+        {/* CARDS */}
         <div
           style={{
             display: "flex",
             gap: "3rem",
-            flexWrap: "wrap",
             justifyContent: "center",
             padding: "2rem",
+            flexWrap: "wrap",
           }}
         >
-          {experiences.map((exp, index) => {
-            const isOpen = openCards.includes(index);
-
-            return (
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              style={{
+                width: "380px",
+                background: "#e7dbc8",
+                color: "#3a2f25",
+                padding: "1.5rem",
+                borderRadius: "14px",
+                cursor: "pointer",
+                position: "relative",
+                boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
+              }}
+            >
+              {/* stitched border */}
               <div
-                key={index}
-                onClick={() => handleClick(index)}
                 style={{
-                  width: isOpen ? "90%" : "400px",
-                  maxWidth: "1000px",
-                  background: "#e7dbc8",
-                  color: "#3a2f25",
-                  padding: "1.5rem",
-                  borderRadius: "14px",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                  position: "relative",
-                  maxHeight: isOpen ? "950px" : "350px",
-                  transform: isOpen ? "scale(1.025)" : "scale(1)",
-                  transition:
-                    "all 0.6s cubic-bezier(0.25, 1, 0.3, 1)",
-                  boxShadow: isOpen
-                    ? "0 0 45px rgba(0, 0, 0, 0.45)"
-                    : "0 8px 20px rgba(0,0,0,0.35)",
+                  position: "absolute",
+                  inset: "8px",
+                  border: "2px dashed #5e4b31",
+                  borderRadius: "10px",
+                  pointerEvents: "none",
+                }}
+              />
+
+              <Image
+                src={exp.img}
+                width={1200}
+                height={260}
+                alt={exp.title}
+                style={{
+                  width: "100%",
+                  height: "260px",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                  marginBottom: "1.2rem",
+                }}
+              />
+
+              <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
+                {exp.title}
+              </h2>
+
+              <div
+                style={{
+                  fontSize: "1.2rem",
+                  opacity: 0.8,
+                  letterSpacing: "2px",
                 }}
               >
-                {/* stitched border */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: "8px",
-                    border: "2px dashed #5e4b31",
-                    borderRadius: "10px",
-                    pointerEvents: "none",
-                  }}
-                />
-
-                {/* IMAGE */}
-                <Image
-                  src={exp.img}
-                  width={1600}
-                  height={isOpen ? 420 : 260}
-                  alt={exp.title}
-                  style={{
-                    width: "100%",
-                    height: isOpen ? "420px" : "260px",
-                    objectFit: "cover",
-                    borderRadius: "12px",
-                    marginBottom: "1.2rem",
-                  }}
-                />
-
-                {/* TITLE + YEAR + ICON */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    marginBottom: "0.6rem",
-                  }}
-                >
-                  <div>
-                    <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
-                      {exp.title}
-                    </h2>
-
-                    {/* YEAR — GEDE & HILANG SAAT OPEN */}
-                    {!isOpen && (
-                      <div
-                        style={{
-                          fontSize: "1.2rem",
-                          marginTop: "4px",
-                          letterSpacing: "2px",
-                          opacity: 0.85,
-                        }}
-                      >
-                        {exp.year}
-                      </div>
-                    )}
-                  </div>
-
-                  <ChevronDown
-                    style={{
-                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.4s ease",
-                    }}
-                  />
-                </div>
-
-                {/* DESCRIPTION */}
-                <p
-                  style={{
-                    fontSize: "1.1rem",
-                    lineHeight: 1.6,
-                    opacity: isOpen ? 1 : 0,
-                    transform: isOpen
-                      ? "translateY(0)"
-                      : "translateY(10px)",
-                    transition: "all 0.5s ease",
-                  }}
-                >
-                  {isOpen ? exp.longDesc : exp.shortDesc}
-                </p>
-
-                {/* UNDERLINE */}
-                <div
-                  style={{
-                    marginTop: "1rem",
-                    height: "2px",
-                    background:
-                      "linear-gradient(to right, #000000ff, transparent)",
-                    width: isOpen ? "100%" : "0%",
-                    transition: "width 0.6s ease",
-                  }}
-                />
+                {exp.year}
               </div>
-            );
-          })}
+
+              <ChevronDown style={{ marginTop: "0.6rem" }} />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* MARQUEE — ORIGINAL — TIDAK DISENTUH */}
+      {/* OVERLAY (NO CLICK CLOSE) */}
+      {activeIndex !== null && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.55)",
+            backdropFilter: "blur(6px)",
+            zIndex: 40,
+          }}
+        />
+      )}
+
+      {/* MODAL */}
+      {activeIndex !== null && (
+        <div
+          style={{
+            position: "fixed",
+            top: "54%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "88%",
+            maxWidth: "900px",
+            background: "#e7dbc8",
+            color: "#3a2f25",
+            padding: "2rem",
+            borderRadius: "18px",
+            zIndex: 50,
+            fontFamily: "'Playfair Display', serif",
+            boxShadow: "0 25px 70px rgba(0,0,0,0.55)",
+            animation: "fadeInScale 0.5s ease",
+          }}
+        >
+          <Image
+            src={experiences[activeIndex].img}
+            width={1400}
+            height={360}
+            alt=""
+            style={{
+              width: "100%",
+              height: "360px",
+              objectFit: "cover",
+              borderRadius: "14px",
+              marginBottom: "1.5rem",
+            }}
+          />
+
+          {/* HEADER */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <h2 style={{ fontSize: "2.2rem", fontWeight: "bold" }}>
+                {experiences[activeIndex].title}
+              </h2>
+              <div style={{ opacity: 0.7 }}>
+                {experiences[activeIndex].year}
+              </div>
+            </div>
+
+            {showClose && (
+              <X
+                onClick={() => setActiveIndex(null)}
+                style={{
+                  cursor: "pointer",
+                  animation: "fadeInClose 0.4s ease",
+                }}
+              />
+            )}
+          </div>
+
+          <p
+            style={{
+              marginTop: "1.5rem",
+              fontSize: "1.1rem",
+              lineHeight: 1.7,
+            }}
+          >
+            {experiences[activeIndex].longDesc}
+          </p>
+        </div>
+      )}
+
+      {/* MARQUEE — ORIGINAL (DIKEMBALIKAN FULL) */}
       <div
         style={{
           width: "100%",
@@ -270,6 +275,31 @@ export default function Experience() {
           • LET'S CREATE SOMETHING TOGETHER •
         </p>
       </div>
+
+      {/* ANIMATIONS */}
+      <style jsx global>{`
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -48%) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+
+        @keyframes fadeInClose {
+          from {
+            opacity: 0;
+            transform: scale(0.6);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </>
   );
 }
