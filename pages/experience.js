@@ -16,13 +16,13 @@ export default function Experience() {
 
   const experiences = [
     {
-      title: "Intern — JSC",
+      title: "Intern — Jakarta Smart City (JSC)",
       year: "2025",
       img: "/images/internjsc.jpeg",
       shortDesc:
         "Infrastructure, cybersecurity, and enterprise IT environment learning experience.",
       longDesc:
-        "During my internship at JSC, I learned and observed the internal working environment, especially in the infrastructure division. I gained an understanding of IT infrastructure management in a professional setting. I also participated in ISO-related meetings and learned about information security practices, including the implementation of Web Application Firewall (WAF). Additionally, I joined the IoT team for field visits to check CCTV systems and sensors at a pump house facility.",
+        "During my internship at Jakarta Smart City (JSC), I learned and observed the internal working environment, especially in the infrastructure division. I gained an understanding of IT infrastructure management in a professional setting. I also participated in ISO-related meetings and learned about information security practices, including the implementation of Web Application Firewall (WAF). Additionally, I joined the IoT team for field visits to check CCTV systems and sensors at a pump house facility.",
     },
     {
       title: "Coming Soon",
